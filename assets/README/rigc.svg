@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="rigc.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="0.54361974"
+     inkscape:cx="574.85035"
+     inkscape:cy="368.82399"
+     inkscape:window-width="1464"
+     inkscape:window-height="916"
+     inkscape:window-x="50"
+     inkscape:window-y="38"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient16"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop16" />
+      <stop
+         style="stop-color:#ffff00;stop-opacity:1;"
+         offset="0.15582192"
+         id="stop18" />
+      <stop
+         style="stop-color:#00b140;stop-opacity:1;"
+         offset="0.37071919"
+         id="stop19" />
+      <stop
+         style="stop-color:#00ffff;stop-opacity:1;"
+         offset="0.56806505"
+         id="stop20" />
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1;"
+         offset="0.77632707"
+         id="stop21" />
+      <stop
+         style="stop-color:#ff00ff;stop-opacity:1;"
+         offset="1"
+         id="stop17" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient16"
+       id="linearGradient17"
+       x1="46.460728"
+       y1="112.21064"
+       x2="224.94759"
+       y2="112.21064"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.97212194,0,0,0.06920858,6.2712795,81.643922)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g25"
+       transform="translate(10.298259,33.760214)"
+       inkscape:export-filename="../../../../../../../tmp/rigc.png"
+       inkscape:export-xdpi="555.49554"
+       inkscape:export-ydpi="555.49554">
+      <g
+         id="g23"
+         transform="matrix(0.93957682,0,0,0.86236722,7.4031419,6.3918825)"
+         inkscape:export-filename="rigc.png"
+         inkscape:export-xdpi="555.49554"
+         inkscape:export-ydpi="555.49554">
+        <rect
+           style="fill:#f9f9f9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.2;stroke-linecap:round;stroke-miterlimit:13.7;stroke-dasharray:1.2, 1.2;paint-order:stroke fill markers"
+           id="rect24"
+           width="186.87538"
+           height="78.122856"
+           x="45.772427"
+           y="36.136124" />
+      </g>
+      <g
+         id="g24"
+         transform="translate(0.00946908,-0.00308711)">
+        <g
+           id="g21">
+          <path
+             id="rect1"
+             style="fill:#4d4d4d;fill-rule:evenodd;stroke:none;stroke-width:1.2;stroke-linecap:round;stroke-miterlimit:13.7;stroke-dasharray:1.2, 1.2;paint-order:stroke fill markers"
+             d="m 51.436815,38.629167 v 22.754166 26.458334 h 22.754166 v -8.686809 l 3.704167,3.331063 v 5.355746 H 100.64932 V 79.24631 l -2.467632,-1.541321 2.467632,-1.895336 V 38.629167 Z m 22.754166,22.754166 h 3.704167 l -0.004,3.647872 -3.704167,-2.313679 z"
+             sodipodi:nodetypes="cccccccccccccccccc" />
+          <rect
+             style="fill:#00b140;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.2;stroke-linecap:round;stroke-miterlimit:13.7;stroke-dasharray:1.2, 1.2;paint-order:stroke fill markers"
+             id="rect2"
+             width="22.754166"
+             height="49.212498"
+             x="101.68907"
+             y="38.629169" />
+          <path
+             id="rect3"
+             style="fill:#4d4d4d;fill-rule:evenodd;stroke:none;stroke-width:1.2;stroke-linecap:round;stroke-miterlimit:13.7;stroke-dasharray:1.2, 1.2;paint-order:stroke fill markers"
+             d="m 125.48298,38.629167 v 22.754167 26.458333 h 22.75417 26.45833 V 86.254167 65.0875 62.441667 h -22.75417 l -3.70416,2.645833 v -3.704166 h 26.45833 V 38.629167 h -26.45833 z"
+             sodipodi:nodetypes="ccccccccccccccc" />
+          <path
+             id="rect6"
+             style="fill:#4d4d4d;fill-rule:evenodd;stroke:none;stroke-width:1.2;stroke-linecap:round;stroke-miterlimit:13.7;stroke-dasharray:1.2, 1.2;paint-order:stroke fill markers"
+             d="M 175.73523,38.629167 V 61.383334 65.0875 87.841667 h 22.75417 26.45833 V 65.0875 H 198.4894 v -3.704166 h 26.45833 V 38.629167 H 198.4894 Z" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-weight:bold;font-size:17.9934px;line-height:1.25;font-family:'Tungsten Narrow';-inkscape-font-specification:'Tungsten Narrow Bold';text-align:center;text-anchor:middle;fill:#000001;fill-opacity:1;stroke-width:0.674752"
+           x="138.16528"
+           y="103.74862"
+           id="text15"><tspan
+             sodipodi:role="line"
+             id="tspan15"
+             style="fill:#000001;fill-opacity:1;stroke-width:0.674752"
+             x="138.16528"
+             y="103.74862">ULTRA HIGH DEFINITION PINBALL STREAMING</tspan></text>
+        <rect
+           style="fill:url(#linearGradient17);fill-rule:evenodd;stroke:none;stroke-width:0.311259;stroke-linecap:round;stroke-miterlimit:13.7;stroke-dasharray:0.311259, 0.311259;paint-order:stroke fill markers"
+           id="rect16"
+           width="173.511"
+           height="0.99807674"
+           x="51.436771"
+           y="88.91082" />
+      </g>
+    </g>
+  </g>
+</svg>

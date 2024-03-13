@@ -1,0 +1,50 @@
+# Orei multi-viewer commands
+# https://cdn.shopify.com/s/files/1/1988/4253/files/UHD-401MV-Updated_User_Manual.pdf?v=1672745852
+
+# Magewell encoder API
+# https://www.magewell.com/api-docs/pro-convert-encoder-api/
+---
+config:
+  local:
+    serial_port: /dev/cu.usbserial-3
+    # set to true to ignore encoder when local serial is connected
+    ignore_encoder: true
+    debug: true
+  mv:
+    ip_addr: 192.168.37.5
+    modes:
+      3840x2160p60: 3
+      3840x2160p30: 5
+      1920x1080p60: 8
+    scenes:
+      single: 1
+      pip: 2 # Not tested
+      pbp: 3 # Not tested
+      triple: 4
+      quad: 5
+  encoder:
+    ip_addr: 192.168.37.4
+    user: Admin
+    # md5 of your password (this is Admin)
+    pass: e3afed0047b08059d0fada10f400c1e5
+profiles:
+  default:
+    mv:
+      # Keyed from with config.mv.scenes
+      scene: quad
+      # Keyed from with config.mv.modes
+      output: 3840x2160p60
+      # put X in window Y 
+      layout:
+        one: 1
+        two: 2
+        three: 3
+        four: 4
+      audio: 3
+    encoder:
+      # 50 - 200 "quality" slider, default is 100, ignored when --mbps is used
+      bitrate: 100 
+      # frame rate, raw matches input, half, one-third, quarter are valid
+      framerate: raw
+      # 1920x1080 etc, raw means match input
+      resolution: raw
