@@ -130,7 +130,7 @@ I used a somewhat dull and blank setup for illustration purposes. But it capture
 
 ## Configuring Profiles
 
-The provided configuration example should be self-explanatory. Copy `config.yaml-dist` to a new file and provide on the command line.
+The provided configuration example should be self-explanatory. Copy `config.yaml-dist` to a new file and load it up in OBS.
 
 This section is work in progress.
 
@@ -165,7 +165,7 @@ Next, hit that `+` sign and find `rigc.py` in the `rigc` repository.
 
 # Bugs and Help
 
-Please use [issues](issues) to report potential issues and ask questions.
+Please use [issues](/datamattsson/rigc/issues) to report potential issues and ask questions.
 
 # Background
 
@@ -185,5 +185,4 @@ Contributions to this repository are welcomed.
 
 You can support this project by visiting [linktr.ee/dri374](https://linktr.ee/dri374) and get some schwag from the shop or donate through Patreon or PayPal.
 
-RigC Copyright 2024 Michael Mattsson
-`scene_execute_command.py` Copyright 2022 Joe Samela
+Copyright 2024 Michael Mattsson. Derived work of [josephsamela/obs-scene-execute-command-scripts](https://github.com/josephsamela/obs-scene-execute-command-script/). Copyright 2022 Joe Samela.
