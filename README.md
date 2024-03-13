@@ -1,13 +1,15 @@
+![](assets/README/rigc.png)
+
 # RigC
 
 RigC (pronounced Rigsy) is a set of Python scripts and modules to configure an NDI encoder and a multiviewer. RigC is meant to be strapped into OBS and apply a configuration for the two devices when a broadcaster switch scenes. Many of the parameters of the two devices are supported for configuring the stream and may run locally over a serial port or a remote socket on a serial gateway. Why RigC? See the [background](#background) story.
 
 ## Synopsis
 
-The command is supposed to be embedded in OBS using the `scene_execute_command.py` script. All paths must be absolute when run from inside OBS, including the Python interpreter. See the [installation](#installation) section.
+The `rigc.py` script is supposed to be embedded in OBS. See the [installation](#installation) section. There's a CLI to help iterate faster on profile configurations.
 
 ```
-./rigc.py --help
+./rigcli.py --help
 Usage: rigc.py [OPTIONS]
 
 Options:
@@ -157,11 +159,9 @@ Go to `Tools -> Scripts -> Python Settings`, select the Python virtual environme
 
 ![](assets/README/obs-python.png)
 
-Next, hit that `+` sign and find `scene_execute_command.py` in the `rigc` repository.
+Next, hit that `+` sign and find `rigc.py` in the `rigc` repository.
 
 ![](assets/README/obs-scripts.png)
-
-
 
 # Bugs and Help
 
