@@ -28,14 +28,15 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.5"
-     inkscape:cx="561"
+     inkscape:cx="560"
      inkscape:cy="393"
      inkscape:window-width="1464"
      inkscape:window-height="916"
      inkscape:window-x="50"
      inkscape:window-y="38"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g68" /><defs
+     inkscape:current-layer="g68"
+     showgrid="false" /><defs
      id="defs1"><linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient16"
@@ -905,7 +906,7 @@
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'White Rabbit';-inkscape-font-specification:'White Rabbit Bold';text-align:end;text-anchor:end;fill:#4d4d4d;stroke-width:0.0369537"
            x="289.82925"
            y="116.38042"
-           id="tspan39">Remote serial server and NDI Configuration</tspan></text><path
+           id="tspan39">Remote serial server and NDI configuration</tspan></text><path
          style="fill:#000000;stroke:#cecfce;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:1.2, 1.2;stroke-dashoffset:0;stroke-opacity:1"
          d="M 289.82927,107.67976 H 3.8964793"
          id="path68" /><g
