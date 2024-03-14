@@ -43,11 +43,13 @@ class RigBroke(Exception):
               default='config.yaml', help='config.yaml formatted file')
 @click.option('--profile', default='default', help='Profile name in --config')
 @click.option('--mbps', default=0, help='Throttle encoder bitrate to Mbit/s, overrides bitrate in `encoder` sections in --config. Use with caution.')
+@click.option('--debug', default=False, help='Turn on very verbose logging and override --config flag.', is_flag=True)
 
-def apply(config, profile, mbps):
+def apply(config, profile, mbps, debug):
 
     logger = logging.getLogger(f'{__name__}')
-    logger.setLevel(logging.INFO)
+    if debug:
+        logger.setLevel(logging.DEBUG)
 
     with open(config, encoding="utf-8") as stream:
         try:
@@ -59,11 +61,14 @@ def apply(config, profile, mbps):
     config = cf.get('config')
     profiles = cf.get('profiles')
 
+    if debug:
+        config['debug'] = True
+
     if config and profiles.get(profile):
         rig = PinballRig(config, mbps)
         try:
             rig.configure(config, profiles.get(profile))
-            logger.info(f'Rig configured with profile: "{profile}"')
+            logger.debug(f'Rig configured with profile: "{profile}"')
         except RigBroke:
             logger.error('Failed configuring the rig, check logs.')
             sys.exit(1)
@@ -73,4 +78,4 @@ stanza invalid in --config file')
         sys.exit(1)
 
 if __name__ == '__main__':
-    apply(None, None, None)
+    apply(None, None, None, None)

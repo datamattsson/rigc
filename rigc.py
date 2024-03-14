@@ -9,7 +9,7 @@ RIGC_PROFILE_DISABLED = 'disabled'
 logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S +0000')
 logger = logging.getLogger(f'{__name__}')
-logger.setLevel(logging.DEBUG) # INFO
+logger.setLevel(logging.ERROR)
 
 def script_description():
     return '''<h2>RigC</h2>
@@ -32,6 +32,7 @@ def script_properties():
     rigc_config = obs.obs_data_get_string(settings, "rigc_config")
     if rigc_config:
         obs.obs_properties_add_bool(props, "rigc_enabled", "Enable RigC")
+        obs.obs_properties_add_bool(props, "rigc_debug", "Debug RigC (verbose Script Log)")
         obs.obs_properties_add_int(props, "rigc_bitrate", "Bitrate override (Mbit's)", 0, 100000, 1)
         scenes = obs.obs_frontend_get_scenes()
         profile_list = {}
@@ -67,6 +68,10 @@ def handle_event(event):
 def handle_scene_change():
     scene = obs.obs_frontend_get_current_scene()
     rigc_enabled = obs.obs_data_get_bool(settings, "rigc_enabled")
+    rigc_debug = obs.obs_data_get_bool(settings, "rigc_debug")
+
+    if rigc_debug:
+        logger.setLevel(logging.DEBUG)
 
     if rigc_enabled:
         scene_name = obs.obs_source_get_name(scene)
@@ -75,13 +80,14 @@ def handle_scene_change():
         rigc_bitrate = obs.obs_data_get_int(settings, "rigc_bitrate")
 
         if rigc_profile != RIGC_PROFILE_DISABLED:
-            logger.debug(f"Activating {scene_name}. RigC is applying profile '{rigc_profile}'")
             rigc_args = [
                     f'--config={rigc_config}',
                     f'--profile={rigc_profile}',
                     f'--mbps={rigc_bitrate}'
                     ]
-            logger.debug(f'Running RigC with these args: {rigc_args}')
+            if rigc_debug:
+                rigc_args.append('--debug')
+            logger.debug(f'Running RigC on {scene_name} with these args: {rigc_args}')
             try:
                 result = rigcli.apply(rigc_args)
             except SystemExit:
