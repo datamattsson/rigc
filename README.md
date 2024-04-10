@@ -9,14 +9,15 @@ RigC (pronounced Rigsy) is a set of Python scripts and modules to configure an N
 The `rigc.py` script is supposed to be embedded in OBS. See the [installation](#installation) section. There's a CLI to help iterate faster on profile configurations.
 
 ```
-./rigcli.py --help
-Usage: rigc.py [OPTIONS]
+./cli.py --help
+Usage: cli.py [OPTIONS]
 
 Options:
   --config PATH   config.yaml formatted file
   --profile TEXT  Profile name in --config
   --mbps INTEGER  Throttle encoder bitrate to Mbit/s, overrides bitrate in
                   `encoder` sections in --config. Use with caution.
+  --debug         Turn on very verbose logging and override --config flag.
   --help          Show this message and exit.
 ```
 
@@ -116,6 +117,7 @@ Magewell Pro Converters all have the same API and Ultra Encode would need work.
 
 ![](assets/README/marketecture.png)
 
+<!--
 ## Demonstration
 
 I used a somewhat dull and blank setup for illustration purposes. But it captures the intent and capabilities of RigC.
@@ -127,6 +129,8 @@ I used a somewhat dull and blank setup for illustration purposes. But it capture
 ### Using RigC in a local configuration.
 
 [![Watch the video](https://img.youtube.com/vi/ID/hqdefault.jpg)](https://youtu.be/ID)
+
+-->
 
 ## Configuring Profiles
 
@@ -140,7 +144,7 @@ It's recommended to install a new Python virtual environment.
 
 ```
 env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.11.4
-export PATH=~/.pyenv/versions/3.11.4/bin
+export PATH=~/.pyenv/versions/3.11.4/bin:${PATH}
 ```
 
 Clone this repo into a directory accessible by OBS.

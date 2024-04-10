@@ -1,5 +1,5 @@
 import obspython as obs
-import rigcli
+import cli
 import yaml
 import logging
 

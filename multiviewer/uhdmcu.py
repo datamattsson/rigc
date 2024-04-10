@@ -47,6 +47,7 @@ class FourXOneUHD:
         if viewports and self.config['mv']['scenes'][viewports]:
             self.send_command(f's multiview {self.config["mv"]["scenes"][viewports]}!')
             if viewports == 'triple':
+                self.send_command('s triple mode 2!')
                 self.send_command('s triple aspect 2!')
         else:
             raise Exception(f'Invalid scene, check config stanzas')
@@ -63,6 +64,8 @@ class FourXOneUHD:
             raise Exception(f'HDMI port number is not set')
 
     def send_command(self, cmd):
+        console = ''
+
         if self.connect == 'serial':
 
             ser = serial.Serial(self.config['local']['serial_port'], 115200)
@@ -71,7 +74,8 @@ class FourXOneUHD:
 
             self.logger.debug(f'About to send "{cmd}" to {self.config["local"]["serial_port"]}')
             ser.write(bytes(msg, encoding="ascii"))
-            self.logger.debug('Received from MV: "{msg}"'. format(msg=ser.readline().decode().rstrip('\r\n')))
+            console = ser.readline().decode().rstrip('\r\n')
+            self.logger.debug('Received from MV: "{msg}"'. format(msg=console))
 
         if self.connect == 'remote':
 
@@ -84,7 +88,9 @@ class FourXOneUHD:
                 s.connect((host, port))
                 self.logger.debug(f'About to send "{cmd}" to {host}:{port}')
                 s.sendall(bytes(msg, encoding="ascii"))
-                self.logger.debug('Received from MV: "{msg}"'. format(msg=s.recv(64).decode().rstrip('\r\n')))
+                console = s.recv(64).decode().rstrip('\r\n')
+                self.logger.debug('Received from MV: "{msg}"'. format(msg=console))
+        return console
 
     def apply(self, profile):
         # Output

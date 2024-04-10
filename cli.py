@@ -62,7 +62,7 @@ def apply(config, profile, mbps, debug):
     profiles = cf.get('profiles')
 
     if debug:
-        config['debug'] = True
+        config['local']['debug'] = True
 
     if config and profiles.get(profile):
         rig = PinballRig(config, mbps)
