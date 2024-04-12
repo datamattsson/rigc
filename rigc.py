@@ -89,7 +89,7 @@ def handle_scene_change():
                 rigc_args.append('--debug')
             logger.debug(f'Running RigC on {scene_name} with these args: {rigc_args}')
             try:
-                result = rigcli.apply(rigc_args)
+                result = cli.apply(rigc_args)
             except SystemExit:
                 pass
         else:
