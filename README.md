@@ -23,7 +23,7 @@ Options:
 
 Example configuration file.
 
-```
+```yaml
 # Orei multi-viewer commands
 # https://cdn.shopify.com/s/files/1/1988/4253/files/UHD-401MV-Updated_User_Manual.pdf?v=1672745852
 
@@ -60,8 +60,8 @@ profiles:
       scene: quad
       # Keyed from with config.mv.modes
       output: 3840x2160p60
-      # put X in window Y 
-      layout:
+      # Consume key (viewport) with value (HDMI input)
+      layout: # only use as many keys as there are viewports
         one: 1
         two: 2
         three: 3
