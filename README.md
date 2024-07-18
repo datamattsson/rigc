@@ -99,7 +99,12 @@ These share the same MCU on paper.
 
 Any serial server that expose the serial interface over Telnet (port 23) should work.
 
-- PUSR USR-TCP232-410s  
+These are the ones I've gone through.
+
+- PUSR USR-TCP232-410s
+  - This device puts itself to sleep and needs a perpetual `ping` against it to keep it alive. I have a support ticket open asking for a firmware update etc.
+- StarTech NETRS2321P
+  - Works out of the box without any configuration except setting an IP address.
 
 #### Encoders
 

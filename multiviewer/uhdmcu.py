@@ -58,7 +58,10 @@ class FourXOneUHD:
         if grid:
             window = 1
             for viewport in grid:
-                self.send_command(f's window {grid[viewport]} in {window}!')
+                if len(grid) == 1:
+                    self.send_command(f's window {grid[viewport]}!')
+                else:
+                    self.send_command(f's window {grid[viewport]} in {window}!')
                 window += 1
         else:
             raise Exception(f'HDMI port number is not set')

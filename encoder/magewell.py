@@ -20,8 +20,8 @@ class ProConvert:
         self.__authenticate()
 
         # Throttle params
-        self.interval = 1
-        self.iterations = 10
+        self.interval = 0.5
+        self.iterations = 5
         self.increments = 15 # bitrate slider
         self.toleration = 5 # percentage
         # "slider"
@@ -123,8 +123,7 @@ class ProConvert:
                     continue
             
             self.logger.debug(f'Nothing to throttle. Currently at {throttle}.')
-            sleep(self.interval) 
-
+            break
 
     def apply(self, profile):
         self.__set_framerate(encoder=profile)

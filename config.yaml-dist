@@ -34,8 +34,8 @@ profiles:
       scene: quad
       # Keyed from with config.mv.modes
       output: 3840x2160p60
-      # put X in window Y 
-      layout:
+      # Consume key (viewport) with value (HDMI input)
+      layout: # only use as many keys as there are viewports
         one: 1
         two: 2
         three: 3
