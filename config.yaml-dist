@@ -12,6 +12,10 @@ config:
     debug: true
   mv:
     ip_addr: 192.168.37.5
+    remote_timeout: 2.0  # Positive float timeout in seconds for IP-based command
+                         # If null is given, the socket is put in blocking mode
+    command_delay: .1    # Positive float delay after sending a MV command
+                         # Tune this if timeouts are being hit on quad layouts
     modes:
       3840x2160p60: 3
       3840x2160p30: 5
@@ -34,12 +38,12 @@ profiles:
       scene: quad
       # Keyed from with config.mv.modes
       output: 3840x2160p60
-      # Consume key (viewport) with value (HDMI input)
-      layout: # only use as many keys as there are viewports
-        one: 1
-        two: 2
-        three: 3
-        four: 4
+      # Consume key (HDMI input) and put in value (Multi-Viewer viewport)
+      layout:
+        HDMI-1: 1
+        HDMI-2: 2
+        HDMI-3: 3
+        HDMI-4: 4
       audio: 3
     encoder:
       # 50 - 200 "quality" slider, default is 100, ignored when --mbps is used
@@ -48,3 +52,20 @@ profiles:
       framerate: raw
       # 1920x1080 etc, raw means match input
       resolution: raw
+  player:
+    mv:
+      # Keyed from with config.mv.scenes
+      scene: single
+      # Keyed from with config.mv.modes
+      output: 3840x2160p60
+      # Consume key (HDMI input) with value (viewport output)
+      layout:
+        HDMI-2: 1
+      audio: 3
+    encoder:
+      # 50 - 200
+      bitrate: 200
+      # frame rate, raw matches input, half, one-third, quarter are valid
+      framerate: raw
+      # 1920x1080 etc, raw means match input
+      resolution: 1920x1080
