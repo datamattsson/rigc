@@ -32,6 +32,40 @@ class FourXOneUHD:
         self.remote_timeout = self.config['mv'].get('remote_timeout', 2.0)
         self.command_delay = self.config['mv'].get('command_delay', .1)
 
+        self.config['mv']['modes'] = {
+          '3840x2160p60': 3,
+          '3840x2160p30': 5,
+          '1920x1080p60': 8,
+        }
+
+        self.config['mv']['scenes'] = {
+          'single': 1,
+          'pip': 2,
+          'pbp': 3, # Not implemented
+          'triple': 4,
+          'quad': 5
+        }
+
+        self.config['mv']['backgrounds'] = {
+          'black': 1,
+          'blue': 2
+        }
+
+        self.config['mv']['borders'] = {
+          'black': 1,
+          'red': 2,
+          'green': 3,
+          'blue': 4,
+          'yellow': 5,
+          'magenta': 6,
+          'cyan': 7,
+          'white': 8,
+          'gray': 9
+        }
+
+        self.vka = self.config['mv']['backgrounds'][self.config['mv'].get('vka', 'blue')]
+
+
     def __poweroff(self):
         self.send_command('power 0!')
 
@@ -54,12 +88,18 @@ class FourXOneUHD:
     
     def __scene(self, **kwargs):
         viewports = kwargs.get('viewports')
+        pip = kwargs.get('pip')
 
         if viewports and self.config['mv']['scenes'][viewports]:
             self.send_command(f's multiview {self.config["mv"]["scenes"][viewports]}!')
             if viewports == 'triple':
                 self.send_command('s triple mode 2!')
                 self.send_command('s triple aspect 2!')
+            if viewports == 'pip':
+                x = pip.get('pos-x', 2)
+                y = pip.get('pos-y', 3)
+                size = pip.get('size', 25)
+                self.send_command(f's PIP {x} {y} {size} {size}!')
         else:
             raise Exception(f'Invalid scene, check config stanzas')
 
@@ -70,7 +110,8 @@ class FourXOneUHD:
             for hdmi in grid:
                 if len(grid) == 1:
                     if grid[hdmi] == 1:
-                        self.send_command(f's in source {self.inputs[hdmi]}!')
+                        self.send_command(f's multiview {self.config["mv"]["scenes"]["single"]}!')
+                        self.send_command(f's window 1 in {self.inputs[hdmi]}!')
                     else:
                         self.logger.debug(f'{hdmi} value not legal for scene type')
                 else:
@@ -89,7 +130,10 @@ class FourXOneUHD:
 
             self.logger.debug(f'About to send "{cmd}" to {self.config["local"]["serial_port"]}')
             ser.write(bytes(msg, encoding="ascii"))
-            console = ser.readline().decode().rstrip('\r\n')
+
+            if self.config['local']['debug']:
+                console = ser.readline().decode().rstrip('\r\n')
+
             self.logger.debug('Received from MV: "{msg}"'. format(msg=console))
 
         if self.connect == 'remote':
@@ -103,7 +147,10 @@ class FourXOneUHD:
                 s.connect((host, port))
                 self.logger.debug(f'About to send "{cmd}" to {host}:{port} with a timeout of {self.remote_timeout}s')
                 s.sendall(bytes(msg, encoding="ascii"))
-                console = s.recv(32).decode().rstrip('\r\n')
+
+                if self.config['local']['debug']:
+                    console = s.recv(32).decode().rstrip('\r\n')
+
                 self.logger.debug('Received from MV: "{msg}"'. format(msg=console))
                 s.shutdown(socket.SHUT_RDWR)
                 s.close()
@@ -111,11 +158,23 @@ class FourXOneUHD:
         time.sleep(self.command_delay)
         return console
 
+    def baseline(self):
+        self.send_command(f's multiview 1!')
+        self.send_command(f's auto switch 0!')
+        self.send_command(f's output hdcp 3!')
+        self.send_command(f's output vka {self.vka}!')
+        self.send_command(f's window source osd 0!')
+        self.send_command(f's multiview 5!')
+        self.send_command(f's window 1 border 0!')
+        self.send_command(f's window 2 border 0!')
+        self.send_command(f's window 3 border 0!')
+        self.send_command(f's window 4 border 0!')
+
     def apply(self, profile):
         # Output
         self.__output(res=profile.get('output'))
         # Scene
-        self.__scene(viewports=profile.get('scene'))
+        self.__scene(viewports=profile.get('scene'), pip=profile.get('pip', {}))
         # Layout
         self.__layout(grid=profile.get('layout'))
         # Audio

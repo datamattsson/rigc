@@ -14,23 +14,29 @@ logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S +0000')
 
 class PinballRig:
-    def __init__(self, config, mbps):
+    def __init__(self, config, mbps, baseline):
         self.config = config
         self.mbps = mbps
+        self.baseline = baseline
         self.logger = logging.getLogger(f'{__name__}')
         self.logger.setLevel(logging.DEBUG if self.config.get(
             'local').get('debug') else logging.INFO)
+
     def configure(self, config, profile):
         try:
             mv = uhdmcu.FourXOneUHD(config)
-            mv.apply(profile['mv'])
+            if profile:
+                mv.apply(profile.get('mv'))
+            else:
+                mv.baseline()
+                return
         except Exception as exc:
             self.logger.error(f'Unable to apply MV config: "{exc}"')
             raise RigBroke from exc
-        if not config['local']['ignore_encoder'] or not os.path.exists(config['local']['serial_port']):
+        if not self.config.get('local').get('ignore_encoder') and profile.get('encoder'):
             try:
                 enc = magewell.ProConvert(config, self.mbps)
-                enc.apply(profile['encoder'])
+                enc.apply(profile.get('encoder'))
             except Exception as exc:
                 self.logger.error(f'Unable to apply Encoder config: {exc}')
                 raise RigBroke from exc
@@ -43,9 +49,10 @@ class RigBroke(Exception):
               default='config.yaml', help='config.yaml formatted file')
 @click.option('--profile', default='default', help='Profile name in --config')
 @click.option('--mbps', default=0, help='Throttle encoder bitrate to Mbit/s, overrides bitrate in `encoder` sections in --config. Use with caution.')
+@click.option('--baseline', default=False, help='Apply multiviewer baseline configuration suitable for streaming.', is_flag=True)
 @click.option('--debug', default=False, help='Turn on very verbose logging and override --config flag.', is_flag=True)
 
-def apply(config, profile, mbps, debug):
+def apply(config, profile, mbps, debug, baseline):
 
     logger = logging.getLogger(f'{__name__}')
     if debug:
@@ -64,13 +71,21 @@ def apply(config, profile, mbps, debug):
     if debug:
         config['local']['debug'] = True
 
-    if config and profiles.get(profile):
-        rig = PinballRig(config, mbps)
+    if config and profiles.get(profile) and not baseline:
+        rig = PinballRig(config, mbps, baseline)
         try:
             rig.configure(config, profiles.get(profile))
             logger.debug(f'Rig configured with profile: "{profile}"')
         except RigBroke:
             logger.error('Failed configuring the rig, check logs.')
+            sys.exit(1)
+    elif config and baseline:
+        rig = PinballRig(config, mbps, baseline)
+        try:
+            rig.configure(config, False)
+            logger.debug(f'Rig baseline configured.')
+        except RigBroke:
+            logger.error('Failed applying baseline, check logs.')
             sys.exit(1)
     else:
         logger.error(f'The `config` stanza or profile "{profile}" in the `profiles` \
@@ -78,4 +93,4 @@ stanza invalid in --config file')
         sys.exit(1)
 
 if __name__ == '__main__':
-    apply(None, None, None, None)
+    apply(None, None, None, None, None)
