@@ -4,6 +4,10 @@
 
 RigC (pronounced Rigsy) is a set of Python scripts and modules to configure an NDI encoder and a multiviewer. RigC is meant to be strapped into OBS and apply a configuration for the two devices when a broadcaster switch scenes. Many of the parameters of the two devices are supported for configuring the stream and may run locally over a serial port or a remote socket on a serial gateway. Why RigC? See the [background](#background) story.
 
+🛑 **MacOS Seqoia 15.0 to 15.2 and potential future updates:** Local serial port open/close is super slow. This makes RigC unusable in local serial port mode during live production. Configuring the multiviewer as a one off with RigC is fine. Monitor this thread for updates: https://discussions.apple.com/thread/255763367
+
+Using RigC with an Ethernet-to-Serial device works fine as RigC just uses TCP/IP for communication with the multiviewer.
+
 ## Synopsis
 
 The `rigc.py` script is supposed to be embedded in OBS. See the [installation](#installation) section. There's a CLI to help iterate faster on profile configurations.
