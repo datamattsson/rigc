@@ -166,8 +166,10 @@ These are the ones I've gone through.
 
 - PUSR USR-TCP232-410s
   - This device puts itself to sleep and needs a perpetual `ping` against it to keep it alive. I have a support ticket open asking for a firmware update etc.
-- StarTech NETRS2321P
+- StarTech NETRS2321P (discontinued, see next)
   - Works out of the box without any configuration except setting an IP address.
+- StarTech I13-SERIAL-ETHERNET
+  - Set IP addrass and serial to 115200-8-N-1-N. Run as "TCP Server" on port 23. 
 
 **Tip:** If you're looking for a quick and dirty solution to just run a few commands on the multiviewer, check out [CoolTerm](https://coolterm.macupdate.com/). It works for both local and remote serial interfaces and great for debugging.
 
