@@ -251,7 +251,7 @@ Next, hit that `+` sign and find `rigc.py` in the `rigc` repository.
 
 # Bugs and Help
 
-Please use [issues](issues) to report potential issues and ask questions.
+Please use [issues](/issues) to report potential issues and ask questions.
 
 ## Known Issues and Limitations
 
