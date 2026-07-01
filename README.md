@@ -1,4 +1,4 @@
-![](assets/README/rigc.png)
+![](https://raw.githubusercontent.com/datamattsson/rigc/main/assets/README/rigc.png)
 
 # RigC
 
@@ -189,7 +189,7 @@ Magewell Pro Converters all have the same API. The Ultra Encode series would nee
 
 ## Marketecture
 
-![](assets/README/marketecture.png)
+![](https://raw.githubusercontent.com/datamattsson/rigc/main/assets/README/marketecture.png)
 
 Using the serial interface is optional and RigC can configure a quad or triple view as a set-it-and-forget-it on the multiviewer. The output may be captured by either an encoder remotely or HDMI locally. In such configuration, RigC does not even need to be installed into OBS and can merely be used as a multiviewer configuration tool.
 
@@ -243,11 +243,11 @@ find . -name '*.py' | xargs python -m py_compile
 
 Go to `Tools -> Scripts -> Python Settings`, select the Python virtual environment prescribed above.
 
-![](assets/README/obs-python.png)
+![](https://raw.githubusercontent.com/datamattsson/rigc/main/assets/README/obs-python.png)
 
 Next, hit that `+` sign and find `rigc.py` in the `rigc` repository.
 
-![](assets/README/obs-scripts.png)
+![](https://raw.githubusercontent.com/datamattsson/rigc/main/assets/README/obs-scripts.png)
 
 # Bugs and Help
 
